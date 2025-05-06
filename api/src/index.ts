@@ -7,10 +7,9 @@ const app = express();
 
 app.use(express.json())
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, ) => {
     res.send('Hellow World!');
 });
-
 //products endpoints
 app.use('/products', productsRoutes);
 
