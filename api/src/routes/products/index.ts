@@ -6,11 +6,11 @@ const router = Router();
 router
     .route('/')
         .get(listProducts)
-        .get(createProduct)
+        .post(createProduct)
 router
     .route('/:id')
-        .get( getProduct)
-        .patch( updateProduct)
-        .delete( deleteProduct)
+        .get(getProduct)
+        .patch(updateProduct)
+        .delete(deleteProduct)
 
 export default router
