@@ -19,7 +19,7 @@ export async function getProduct(req: Request, res: Response) {
       .from(productsTable)
       .where(eq(productsTable.id, id));
     if (!product) {
-      res.status(404).send({ message: "Product not found" });
+      res.status(404);
     } else {
       res.json(product);
     }
@@ -29,6 +29,7 @@ export async function getProduct(req: Request, res: Response) {
 }
 export async function createProduct(req: Request, res: Response) {
   try {
+    console.log(req.userId);
     const [product] = await db
       .insert(productsTable)
       .values(req.body)
