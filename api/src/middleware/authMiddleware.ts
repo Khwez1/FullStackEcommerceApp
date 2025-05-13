@@ -35,7 +35,7 @@ export function verifyAdmin(req: Request, res: Response, next: NextFunction) {
 
 export function verifyVendor(req: Request, res: Response, next: NextFunction) {
   const role = req.role;
-  if (role !== 'seller') {
+  if (role !== 'vendor') {
     res.status(401).json({ error: "Access Denied" });
     return;
   }
@@ -47,7 +47,7 @@ export function verifyRole(req: Request, res: Response, next: NextFunction) {
   
   switch (role) {
     case 'admin':
-    case 'seller':
+    case 'vendor':
       // Both admin and seller roles are allowed
       next();
       break;

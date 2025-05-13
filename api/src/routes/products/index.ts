@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { createProduct, getProduct, listProducts, updateProduct, deleteProduct } from "./productsController";
-import { validateData } from "../../middleware/validation";
+import { createProduct, getProduct, listProducts, updateProduct, deleteProduct } from "./productsController.js";
+import { validateData } from "../../middleware/validation.js";
 
 import { createInsertSchema } from "drizzle-zod";
-import { productsTable } from "../../db/productsSchema";
-import { verifyToken, verifyRole } from "../../middleware/authMiddleware";
+import { productsTable } from "../../db/productsSchema.js";
+import { verifyToken, verifyRole } from "../../middleware/authMiddleware.js";
 
 const createProductSchema = createInsertSchema(productsTable);
 const updateProductSchema = createInsertSchema(productsTable).partial();

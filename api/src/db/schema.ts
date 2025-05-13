@@ -1,3 +1,3 @@
-import * as produceSchema from './productsSchema';
+import * as produceSchema from './productsSchema.js';
 
 export default { ...produceSchema };
