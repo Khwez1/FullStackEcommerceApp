@@ -1,5 +1,6 @@
 import express, { Router } from 'express';
 import productsRoutes from './routes/products/index.js'
+import ordersRoutes from './routes/orders/index.js'
 import authRoutes from './routes/auth/index.js'
 const port = 3000
 
@@ -14,7 +15,8 @@ app.get('/', (req, res, ) => {
 app.use('/products', productsRoutes);
 //users endpoints
 app.use('/auth', authRoutes);
-
+//orders endpoints
+app.use('/orders', ordersRoutes)
 app.listen(port, () => {
     console.log(`listening at http://localhost:${port}`);
 });
