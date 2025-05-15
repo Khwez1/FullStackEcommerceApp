@@ -1,11 +1,12 @@
-import { StatusBar } from "expo-status-bar";
-import { View, Text } from "react-native";
+import { FlatList } from "react-native";
+import products from "../assets/products.json";
+import { ProductListItem } from "../components/ProductListItem";
 
 export default function HomeScreen() {
   return (
-    <View>
-      <StatusBar style="auto" />
-      <Text style={{ fontSize: 30 }}>Home Screen</Text>
-    </View>
+      <FlatList
+        data={products}
+        renderItem={({ item }) => <ProductListItem product={item} />}
+      />
   );
 }
