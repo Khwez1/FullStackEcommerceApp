@@ -8,7 +8,7 @@ import { Button, ButtonText } from "@/components/ui/button";
 import { Link } from "expo-router";
 import { Pressable } from "react-native";
 
-type Product = {
+export type Product = {
   id: string | number;
   name: string;
   image: string;

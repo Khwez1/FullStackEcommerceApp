@@ -6,15 +6,28 @@ import { Card } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Button, ButtonText } from "@/components/ui/button";
 import { Stack, useLocalSearchParams } from "expo-router";
-import products from "@/assets/products.json";
+import { useQuery } from "@tanstack/react-query";
+import { fetchProduct } from "@/api/products";
+import { ActivityIndicator } from "react-native";
 
 export default function ProductDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
 
-  const product = products.find((p) => p.id === Number(id));
+  const { data: product, isLoading, error } = useQuery({
+    queryKey: ['products', id],
+    queryFn: () => fetchProduct(Number(id)),
+  });
 
   if (!product) {
     return <Text>Product not found</Text>;
+  }
+
+  if (isLoading) {
+    return <ActivityIndicator />
+  }
+
+  if (error) {
+    <Text>Product not found</Text>
   }
 
   return (
@@ -22,10 +35,7 @@ export default function ProductDetailsScreen() {
       <Stack.Screen
         options={{
           headerTitle: () => (
-            <Text
-              className="text-lg font-bold text-typography-900"
-              style={{ paddingTop: 6 }} // 👈 apply padding here
-            >
+            <Text className="text-lg font-bold text-typography-900">
               {product.name}
             </Text>
           ),
