@@ -10,7 +10,10 @@ export default function RootLayout() {
     <View style={{ flex: 1 }}>
       <StatusBar style="auto" />
       <GluestackUIProvider>
-        <Stack screenOptions={{ headerTitleAlign: 'center' }} />
+        <Stack screenOptions={{ headerTitleAlign: 'center' }}>
+          <Stack.Screen name="index" options={{ title: 'Shop' }} />
+          <Stack.Screen name="product/[id]" options={{ title: 'Product' }} />
+        </Stack>
       </GluestackUIProvider>
     </View>
   );
