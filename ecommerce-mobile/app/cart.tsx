@@ -1,8 +1,10 @@
+import { createOrder } from "@/api/orders";
 import { Button, ButtonText } from "@/components/ui/button";
 import { HStack } from "@/components/ui/hstack";
 import { Text } from "@/components/ui/text";
 import { VStack } from "@/components/ui/vstack";
 import { useCart } from "@/store/cartStore";
+import { useMutation } from "@tanstack/react-query";
 import { Redirect } from "expo-router";
 import { FlatList } from "react-native";
 
@@ -10,9 +12,25 @@ export default function CartScreen() {
   const items = useCart(state => state.items)
   const resetCart = useCart((state) => state.resetCart)
 
+  const createOrderMutation = useMutation({
+    mutationFn: () => createOrder(
+      items.map(item => ({
+        productId: item.productId,
+        quantity: item.quantity,
+        price: item.product.price //MANAGE FROM SERVER-SIDE
+      }))
+    ),
+    onSuccess: (data) => {
+      console.log(data);
+      resetCart();
+    },
+    onError: (error) => {
+      console.log(error);
+    }
+  });
+
   const onCheckout = async () => {
-    // send order to server
-    resetCart();
+    createOrderMutation.mutate();
   };
 
   if(items.length === 0) {
