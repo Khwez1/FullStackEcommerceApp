@@ -2,8 +2,7 @@ import { Text } from "@/components/ui/text";
 import { Image } from "@/components/ui/image";
 import { Card } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
-import { Link } from "expo-router";
-import { Pressable } from "react-native";
+import  Link  from "next/link";
 
 export type Product = {
   id: string | number;
@@ -15,8 +14,7 @@ export type Product = {
 
 export function ProductListItem({ product }: { product: Product }) {
   return (
-    <Link href={`/product/${product.id}`} asChild>
-      <Pressable className="flex-1">
+    <Link href={`/product/${product.id}`} className="flex flex-1 min-w-[300px]">
         <Card className="p-5 rounded-lg flex-1">
           <Image
             source={{
@@ -33,7 +31,6 @@ export function ProductListItem({ product }: { product: Product }) {
               R{product.price}
             </Heading>
         </Card>
-      </Pressable>
     </Link>
   );
 }
