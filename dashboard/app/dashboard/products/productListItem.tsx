@@ -12,7 +12,7 @@ export type Product = {
   description: string;
 };
 
-export function ProductListItem({ product }: { product: Product }) {
+export default function ProductListItem({ product }: { product: Product }) {
   return (
     <Link href={`/dashboard/products/${product.id}`} className="flex flex-1 min-w-[300px]">
         <Card className="p-5 rounded-lg flex-1">
