@@ -1,5 +1,4 @@
 "use server";
-
 import { login, signup } from "@/api/auth";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -8,6 +7,7 @@ export async function handleLogin(email: string, password: string) {
   let redirectUrl: string = `/login?errorMessage=${encodeURIComponent(
     "Failed to sign in"
   )}`;
+
   try {
     const res = await login(email, password);
 
@@ -20,12 +20,13 @@ export async function handleLogin(email: string, password: string) {
   } finally {
     redirect(redirectUrl);
   }
-
 }
+
 export async function handleSignup(email: string, password: string) {
   let redirectUrl: string = `/login?errorMessage=${encodeURIComponent(
     "Failed to sign up"
   )}`;
+
   try {
     const res = await signup(email, password);
 
