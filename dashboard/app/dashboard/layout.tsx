@@ -7,8 +7,7 @@ import { HStack } from "@/components/ui/hstack";
 import { Text } from "@/components/ui/text";
 import { VStack } from "@/components/ui/vstack";
 import Link from "next/link";
-import { Icon, MenuIcon, MessageCircleIcon, StarIcon, ThreeDotsIcon } from "@/components/ui/icon";
-// import { ClipboardIcon, HomeIcon, ShoppingBagIcon } from "lucide-react-native";
+import { Icon, MenuIcon, StarIcon, ThreeDotsIcon } from "@/components/ui/icon";
 
 type DashboardLayoutProps = {
   children: React.ReactNode;
