@@ -6,6 +6,7 @@ import { productsTable } from "../../db/productsSchema.js";
 export async function listProducts(req: Request, res: Response) {
   try {
     const products = await db.select().from(productsTable);
+    console.log("DB returned:", products.length, "products");
     res.json(products);
   } catch (e) {
     res.status(500).send(e);
